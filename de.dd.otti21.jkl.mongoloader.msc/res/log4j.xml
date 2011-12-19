@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration debug="false" threshold="all"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="trace" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %d{HH:mm:ss,SSS} [%t] %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ROLLING" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="debug" />
+		<param name="File" value="log/defectquiz.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %d{HH:mm:ss,SSS} [%t] %c{2} - %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="org.apache">
+		<level value="WARN" />
+	</logger>
+
+	<logger name="org.springframework">
+		<level value="WARN" />
+	</logger>
+
+	<logger name="org.dbunit">
+		<level value="WARN" />
+	</logger>
+
+	<logger name="de.dd.otti21">
+		<level value="INFO" />
+	</logger>
+	
+	<root>
+		<level value="TRACE" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</log4j:configuration>
