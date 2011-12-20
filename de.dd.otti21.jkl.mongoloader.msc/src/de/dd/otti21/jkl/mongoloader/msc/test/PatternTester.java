@@ -1,5 +1,8 @@
 package de.dd.otti21.jkl.mongoloader.msc.test;
 
+import java.util.Iterator;
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -68,5 +71,15 @@ public class PatternTester implements PatternTest {
 	@Test
 	public void genrePatterntest() {
 		Assert.assertTrue("(12)".matches("\\(\\d+\\)"));
+	}
+	
+	@Test
+	public void printEnvironment() {
+		Map<String, String> environment = System.getenv();
+		
+		for (Iterator<String> iterator = environment.keySet().iterator(); iterator.hasNext();) {
+			String key =  iterator.next();
+			System.out.println(key+":\t"+environment.get(key));
+		}
 	}
 }
